@@ -11,12 +11,12 @@
  */
 
 
-package io.swagger.client.api;
+package com.messente.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.model.ErrorResponse;
-import io.swagger.client.model.OmniMessageCreateSuccessResponse;
-import io.swagger.client.model.Omnimessage;
+import com.messente.client.ApiException;
+import com.messente.client.model.ErrorResponse;
+import com.messente.client.model.OmniMessageCreateSuccessResponse;
+import com.messente.client.model.Omnimessage;
 import org.junit.Test;
 import org.junit.Ignore;
 
