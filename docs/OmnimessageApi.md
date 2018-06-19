@@ -18,11 +18,11 @@ Sends an Omnimessage
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.OmnimessageApi;
+//import com.messente.ApiClient;
+//import com.messente.ApiException;
+//import com.messente.Configuration;
+//import com.messente.auth.*;
+//import com.messente.omnichannel.OmnimessageApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 

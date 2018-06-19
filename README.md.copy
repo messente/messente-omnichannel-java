@@ -1,29 +1,24 @@
-# omnichannel-java
-
-Java library for Messente Omnichannel API
-
+# swagger-java-client
 
 ## Requirements
 
-Building the API client library requires:
-1. Java 1.7+
-2. Maven/Gradle
+Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
 
 ## Installation
 
 To install the API client library to your local Maven repository, simply execute:
 
 ```shell
-mvn clean install
+mvn install
 ```
 
 To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
 
 ```shell
-mvn clean deploy
+mvn deploy
 ```
 
-Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) for more information.
+Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
 
 ### Maven users
 
@@ -31,10 +26,10 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.messente.omnichannel</groupId>
-  <artifactId>omnichannel-java</artifactId>
-  <version>0.0.1</version>
-  <scope>compile</scope>
+    <groupId>io.swagger</groupId>
+    <artifactId>swagger-java-client</artifactId>
+    <version>1.0.0</version>
+    <scope>compile</scope>
 </dependency>
 ```
 
@@ -43,28 +38,25 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.messente.omnichannel:omnichannel-java:0.0.1"
+compile "io.swagger:swagger-java-client:1.0.0"
 ```
 
 ### Others
 
 At first generate the JAR by executing:
 
-```shell
-mvn clean package
-```
+    mvn package
 
 Then manually install the following JARs:
 
-* `target/omnichannel-java-0.0.1.jar`
-* `target/lib/*.jar`
+* target/swagger-java-client-1.0.0.jar
+* target/lib/*.jar
 
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-
 public class Main {
 
     public static void main(String[] args) {
@@ -95,6 +87,7 @@ public class Main {
         }
     }
 }
+
 ```
 
 ## Documentation for API Endpoints
