@@ -20,8 +20,4 @@ target
 .gradle
 build
 
-/.swagger-codegen
-
-# Intellij
-
 .idea
