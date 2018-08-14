@@ -1,11 +1,5 @@
 # omnichannel-java
-
-Omnichannel API
-- API version: 0.0.1
-  - Build date: 2018-07-05T11:21:16.566+03:00[Europe/Tallinn]
-
-This is the beta version of Omnichannel API
-
+This is the beta version of Omnichannel API client
 
 
 ## Requirements
@@ -95,6 +89,7 @@ class Main {
         } catch (ApiException e) {
             System.err.println("Exception when calling OmnimessageApi#sendOmnimessage");
             e.printStackTrace();
+            System.out.println(e.getResponseBody());
         }
 
     }
