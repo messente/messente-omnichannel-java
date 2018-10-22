@@ -20,43 +20,57 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.messente.omnichannel.ErrorItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * ErrorResponse
+ * WhatsAppText
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-22T21:01:57.001+03:00[Europe/Tallinn]")
-public class ErrorResponse {
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<ErrorItem> errors = new ArrayList<ErrorItem>();
+public class WhatsAppText {
+  public static final String SERIALIZED_NAME_PREVIEW_URL = "preview_url";
+  @SerializedName(SERIALIZED_NAME_PREVIEW_URL)
+  private Boolean previewUrl = true;
 
-  public ErrorResponse errors(List<ErrorItem> errors) {
-    this.errors = errors;
-    return this;
-  }
+  public static final String SERIALIZED_NAME_BODY = "body";
+  @SerializedName(SERIALIZED_NAME_BODY)
+  private String body;
 
-  public ErrorResponse addErrorsItem(ErrorItem errorsItem) {
-    this.errors.add(errorsItem);
+  public WhatsAppText previewUrl(Boolean previewUrl) {
+    this.previewUrl = previewUrl;
     return this;
   }
 
    /**
-   * Get errors
-   * @return errors
+   * Whether to display link preview if the message contains a hyperlink.
+   * @return previewUrl
   **/
-  @ApiModelProperty(required = true, value = "")
-  public List<ErrorItem> getErrors() {
-    return errors;
+  @ApiModelProperty(value = "Whether to display link preview if the message contains a hyperlink.")
+  public Boolean getPreviewUrl() {
+    return previewUrl;
   }
 
-  public void setErrors(List<ErrorItem> errors) {
-    this.errors = errors;
+  public void setPreviewUrl(Boolean previewUrl) {
+    this.previewUrl = previewUrl;
+  }
+
+  public WhatsAppText body(String body) {
+    this.body = body;
+    return this;
+  }
+
+   /**
+   * Plaintext content for WhatsApp, can contains URLs, emojis and formatting
+   * @return body
+  **/
+  @ApiModelProperty(value = "Plaintext content for WhatsApp, can contains URLs, emojis and formatting")
+  public String getBody() {
+    return body;
+  }
+
+  public void setBody(String body) {
+    this.body = body;
   }
 
 
@@ -68,22 +82,24 @@ public class ErrorResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorResponse errorResponse = (ErrorResponse) o;
-    return Objects.equals(this.errors, errorResponse.errors);
+    WhatsAppText whatsAppText = (WhatsAppText) o;
+    return Objects.equals(this.previewUrl, whatsAppText.previewUrl) &&
+        Objects.equals(this.body, whatsAppText.body);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors);
+    return Objects.hash(previewUrl, body);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorResponse {\n");
+    sb.append("class WhatsAppText {\n");
     
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    previewUrl: ").append(toIndentedString(previewUrl)).append("\n");
+    sb.append("    body: ").append(toIndentedString(body)).append("\n");
     sb.append("}");
     return sb.toString();
   }

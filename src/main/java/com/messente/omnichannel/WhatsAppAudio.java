@@ -20,43 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.messente.omnichannel.ErrorItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * ErrorResponse
+ * WhatsAppAudio
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-22T21:01:57.001+03:00[Europe/Tallinn]")
-public class ErrorResponse {
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<ErrorItem> errors = new ArrayList<ErrorItem>();
+public class WhatsAppAudio {
+  public static final String SERIALIZED_NAME_CONTENT = "content";
+  @SerializedName(SERIALIZED_NAME_CONTENT)
+  private String content;
 
-  public ErrorResponse errors(List<ErrorItem> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public ErrorResponse addErrorsItem(ErrorItem errorsItem) {
-    this.errors.add(errorsItem);
+  public WhatsAppAudio content(String content) {
+    this.content = content;
     return this;
   }
 
    /**
-   * Get errors
-   * @return errors
+   * Base64-encoded audio
+   * @return content
   **/
-  @ApiModelProperty(required = true, value = "")
-  public List<ErrorItem> getErrors() {
-    return errors;
+  @ApiModelProperty(value = "Base64-encoded audio")
+  public String getContent() {
+    return content;
   }
 
-  public void setErrors(List<ErrorItem> errors) {
-    this.errors = errors;
+  public void setContent(String content) {
+    this.content = content;
   }
 
 
@@ -68,22 +60,22 @@ public class ErrorResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorResponse errorResponse = (ErrorResponse) o;
-    return Objects.equals(this.errors, errorResponse.errors);
+    WhatsAppAudio whatsAppAudio = (WhatsAppAudio) o;
+    return Objects.equals(this.content, whatsAppAudio.content);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors);
+    return Objects.hash(content);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorResponse {\n");
+    sb.append("class WhatsAppAudio {\n");
     
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("}");
     return sb.toString();
   }
