@@ -64,15 +64,10 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
 
-import com.messente.*;
-import com.messente.auth.*;
-import com.messente.omnichannel.*;
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
+
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
         basicAuth.setUsername("<MESSENTE_API_USERNAME>");
@@ -86,8 +81,14 @@ public class Main {
         SMS sms = new SMS();
         sms.text("SMS text");
 
-        omnimessage.setMessages(Arrays.<Object>asList(viber, sms));
+        WhatsApp whatsApp = new WhatsApp();
+        WhatsAppText whatsAppText = new WhatsAppText();
+        whatsAppText.body("WhatsApp text");
+        whatsApp.text(whatsAppText);
+
+        omnimessage.setMessages(Arrays.<Object>asList(whatsApp, viber, sms));
         omnimessage.setTo("<recipient phone number in e.164 format>");
+
 
         try {
             OmniMessageCreateSuccessResponse result = apiInstance.sendOmnimessage(omnimessage);
@@ -98,7 +99,6 @@ public class Main {
         }
     }
 }
-
 ```
 
 ## Documentation for API Endpoints

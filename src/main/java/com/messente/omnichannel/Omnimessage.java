@@ -40,9 +40,9 @@ public class Omnimessage {
   @SerializedName(SERIALIZED_NAME_TO)
   private String to;
 
-  public static final String SERIALIZED_NAME_DRL_URL = "drl_url";
-  @SerializedName(SERIALIZED_NAME_DRL_URL)
-  private String drlUrl;
+  public static final String SERIALIZED_NAME_DLR_URL = "dlr_url";
+  @SerializedName(SERIALIZED_NAME_DLR_URL)
+  private String dlrUrl;
 
   public static final String SERIALIZED_NAME_TIME_TO_SEND = "time_to_send";
   @SerializedName(SERIALIZED_NAME_TIME_TO_SEND)
@@ -89,22 +89,22 @@ public class Omnimessage {
     this.to = to;
   }
 
-  public Omnimessage drlUrl(String drlUrl) {
-    this.drlUrl = drlUrl;
+  public Omnimessage dlrUrl(String dlrUrl) {
+    this.dlrUrl = dlrUrl;
     return this;
   }
 
    /**
    * URL where the delivery report will be sent
-   * @return drlUrl
+   * @return dlrUrl
   **/
   @ApiModelProperty(value = "URL where the delivery report will be sent")
-  public String getDrlUrl() {
-    return drlUrl;
+  public String getDlrUrl() {
+    return dlrUrl;
   }
 
-  public void setDrlUrl(String drlUrl) {
-    this.drlUrl = drlUrl;
+  public void setDlrUrl(String dlrUrl) {
+    this.dlrUrl = dlrUrl;
   }
 
   public Omnimessage timeToSend(OffsetDateTime timeToSend) {
@@ -137,13 +137,13 @@ public class Omnimessage {
     Omnimessage omnimessage = (Omnimessage) o;
     return Objects.equals(this.messages, omnimessage.messages) &&
         Objects.equals(this.to, omnimessage.to) &&
-        Objects.equals(this.drlUrl, omnimessage.drlUrl) &&
+        Objects.equals(this.dlrUrl, omnimessage.dlrUrl) &&
         Objects.equals(this.timeToSend, omnimessage.timeToSend);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(messages, to, drlUrl, timeToSend);
+    return Objects.hash(messages, to, dlrUrl, timeToSend);
   }
 
 
@@ -154,7 +154,7 @@ public class Omnimessage {
     
     sb.append("    messages: ").append(toIndentedString(messages)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
-    sb.append("    drlUrl: ").append(toIndentedString(drlUrl)).append("\n");
+    sb.append("    dlrUrl: ").append(toIndentedString(dlrUrl)).append("\n");
     sb.append("    timeToSend: ").append(toIndentedString(timeToSend)).append("\n");
     sb.append("}");
     return sb.toString();

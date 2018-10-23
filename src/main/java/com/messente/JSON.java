@@ -56,9 +56,9 @@ public class JSON {
                     @Override
                     public Class getClassForElement(JsonElement readElement) {
                         Map classByDiscriminatorValue = new HashMap();
-                        classByDiscriminatorValue.put("sms".toUpperCase(Locale.ROOT), .class);
-                        classByDiscriminatorValue.put("viber".toUpperCase(Locale.ROOT), .class);
-                        classByDiscriminatorValue.put("whatsapp".toUpperCase(Locale.ROOT), .class);
+                        classByDiscriminatorValue.put("sms".toUpperCase(Locale.ROOT), SMS.class);
+                        classByDiscriminatorValue.put("viber".toUpperCase(Locale.ROOT), Viber.class);
+                        classByDiscriminatorValue.put("whatsapp".toUpperCase(Locale.ROOT), WhatsApp.class);
                         classByDiscriminatorValue.put("Message".toUpperCase(Locale.ROOT), Message.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "channel"));
