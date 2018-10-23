@@ -16,27 +16,36 @@ Cancels a scheduled Omnimessage
 
 ### Example
 ```java
-// Import classes:
-//import com.messente.ApiClient;
-//import com.messente.ApiException;
-//import com.messente.Configuration;
-//import com.messente.auth.*;
-//import com.messente.omnichannel.OmnimessageApi;
+import com.messente.*;
+import com.messente.auth.*;
+import com.messente.omnichannel.*;
+import java.util.Arrays;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+class Main {
+    public static void main(String[] args) {
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("<MESSENTE_API_USERNAME>");
+        basicAuth.setPassword("<MESSENTE_API_PASSWORD>");
 
-// Configure HTTP basic authorization: basicAuth
-HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-basicAuth.setUsername("YOUR USERNAME");
-basicAuth.setPassword("YOUR PASSWORD");
+        OmnimessageApi apiInstance = new OmnimessageApi();
+        Omnimessage omnimessage = new Omnimessage(); // Omnimessage | Omnimessage to be sent
+        Viber viber = new Viber();
+        viber.text("Viber text");
+        viber.sender("Messente");
+        SMS sms = new SMS();
+        sms.text("SMS text");
 
-OmnimessageApi apiInstance = new OmnimessageApi();
-UUID omnimessageId = new UUID(); // UUID | UUID of the scheduled Omnimessage to be cancelled
-try {
-    apiInstance.cancelScheduledMessage(omnimessageId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling OmnimessageApi#cancelScheduledMessage");
-    e.printStackTrace();
+        omnimessage.setMessages(Arrays.<Object>asList(viber, sms));
+        omnimessage.setTo("<recipient phone number in e.164 format>");
+
+        try {
+            OmniMessageCreateSuccessResponse result = apiInstance.sendOmnimessage(omnimessage);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OmnimessageApi#sendOmnimessage");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -67,28 +76,37 @@ Sends an Omnimessage
 
 ### Example
 ```java
-// Import classes:
-//import com.messente.ApiClient;
-//import com.messente.ApiException;
-//import com.messente.Configuration;
-//import com.messente.auth.*;
-//import com.messente.omnichannel.OmnimessageApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+import com.messente.*;
+import com.messente.auth.*;
+import com.messente.omnichannel.*;
+import java.util.Arrays;
 
-// Configure HTTP basic authorization: basicAuth
-HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-basicAuth.setUsername("YOUR USERNAME");
-basicAuth.setPassword("YOUR PASSWORD");
+class Main {
+    public static void main(String[] args) {
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("<MESSENTE_API_USERNAME>");
+        basicAuth.setPassword("<MESSENTE_API_PASSWORD>");
 
-OmnimessageApi apiInstance = new OmnimessageApi();
-Omnimessage omnimessage = new Omnimessage(); // Omnimessage | Omnimessage to be sent
-try {
-    OmniMessageCreateSuccessResponse result = apiInstance.sendOmnimessage(omnimessage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling OmnimessageApi#sendOmnimessage");
-    e.printStackTrace();
+        OmnimessageApi apiInstance = new OmnimessageApi();
+        Omnimessage omnimessage = new Omnimessage(); // Omnimessage | Omnimessage to be sent
+        Viber viber = new Viber();
+        viber.text("Viber text");
+        viber.sender("Messente");
+        SMS sms = new SMS();
+        sms.text("SMS text");
+
+        omnimessage.setMessages(Arrays.<Object>asList(viber, sms));
+        omnimessage.setTo("<recipient phone number in international format>");
+
+        try {
+            OmniMessageCreateSuccessResponse result = apiInstance.sendOmnimessage(omnimessage);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OmnimessageApi#sendOmnimessage");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
