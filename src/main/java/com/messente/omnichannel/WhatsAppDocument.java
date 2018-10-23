@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * WhatsAppDocument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-22T21:01:57.001+03:00[Europe/Tallinn]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-23T09:49:45.209+03:00[Europe/Tallinn]")
 public class WhatsAppDocument {
   public static final String SERIALIZED_NAME_CAPTION = "caption";
   @SerializedName(SERIALIZED_NAME_CAPTION)
@@ -64,7 +64,7 @@ public class WhatsAppDocument {
    * Base64-encoded image
    * @return content
   **/
-  @ApiModelProperty(value = "Base64-encoded image")
+  @ApiModelProperty(required = true, value = "Base64-encoded image")
   public String getContent() {
     return content;
   }

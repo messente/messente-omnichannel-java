@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * WhatsAppAudio
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-22T21:01:57.001+03:00[Europe/Tallinn]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-23T09:49:45.209+03:00[Europe/Tallinn]")
 public class WhatsAppAudio {
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
@@ -42,7 +42,7 @@ public class WhatsAppAudio {
    * Base64-encoded audio
    * @return content
   **/
-  @ApiModelProperty(value = "Base64-encoded audio")
+  @ApiModelProperty(required = true, value = "Base64-encoded audio")
   public String getContent() {
     return content;
   }

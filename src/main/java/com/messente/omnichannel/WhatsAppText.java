@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * WhatsAppText
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-22T21:01:57.001+03:00[Europe/Tallinn]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-23T09:49:45.209+03:00[Europe/Tallinn]")
 public class WhatsAppText {
   public static final String SERIALIZED_NAME_PREVIEW_URL = "preview_url";
   @SerializedName(SERIALIZED_NAME_PREVIEW_URL)
@@ -64,7 +64,7 @@ public class WhatsAppText {
    * Plaintext content for WhatsApp, can contains URLs, emojis and formatting
    * @return body
   **/
-  @ApiModelProperty(value = "Plaintext content for WhatsApp, can contains URLs, emojis and formatting")
+  @ApiModelProperty(required = true, value = "Plaintext content for WhatsApp, can contains URLs, emojis and formatting")
   public String getBody() {
     return body;
   }

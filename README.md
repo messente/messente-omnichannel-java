@@ -69,8 +69,11 @@ import com.messente.auth.*;
 import com.messente.omnichannel.*;
 import java.util.Arrays;
 
-class Main {
+public class Main {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
         basicAuth.setUsername("<MESSENTE_API_USERNAME>");
         basicAuth.setPassword("<MESSENTE_API_PASSWORD>");

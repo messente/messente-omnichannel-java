@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**content** | **String** | Base64-encoded audio |  [optional]
+**content** | **String** | Base64-encoded audio | 
 
 
 

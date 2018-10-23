@@ -16,36 +16,27 @@ Cancels a scheduled Omnimessage
 
 ### Example
 ```java
-import com.messente.*;
-import com.messente.auth.*;
-import com.messente.omnichannel.*;
-import java.util.Arrays;
+// Import classes:
+//import com.messente.ApiClient;
+//import com.messente.ApiException;
+//import com.messente.Configuration;
+//import com.messente.auth.*;
+//import com.messente.omnichannel.OmnimessageApi;
 
-class Main {
-    public static void main(String[] args) {
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("<MESSENTE_API_USERNAME>");
-        basicAuth.setPassword("<MESSENTE_API_PASSWORD>");
+ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-        OmnimessageApi apiInstance = new OmnimessageApi();
-        Omnimessage omnimessage = new Omnimessage(); // Omnimessage | Omnimessage to be sent
-        Viber viber = new Viber();
-        viber.text("Viber text");
-        viber.sender("Messente");
-        SMS sms = new SMS();
-        sms.text("SMS text");
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
 
-        omnimessage.setMessages(Arrays.<Object>asList(viber, sms));
-        omnimessage.setTo("<recipient phone number in e.164 format>");
-
-        try {
-            OmniMessageCreateSuccessResponse result = apiInstance.sendOmnimessage(omnimessage);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling OmnimessageApi#sendOmnimessage");
-            e.printStackTrace();
-        }
-    }
+OmnimessageApi apiInstance = new OmnimessageApi();
+UUID omnimessageId = new UUID(); // UUID | UUID of the scheduled Omnimessage to be cancelled
+try {
+    apiInstance.cancelScheduledMessage(omnimessageId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling OmnimessageApi#cancelScheduledMessage");
+    e.printStackTrace();
 }
 ```
 
@@ -76,14 +67,16 @@ Sends an Omnimessage
 
 ### Example
 ```java
-
 import com.messente.*;
 import com.messente.auth.*;
 import com.messente.omnichannel.*;
 import java.util.Arrays;
 
-class Main {
+public class Main {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
         basicAuth.setUsername("<MESSENTE_API_USERNAME>");
         basicAuth.setPassword("<MESSENTE_API_PASSWORD>");
@@ -97,7 +90,7 @@ class Main {
         sms.text("SMS text");
 
         omnimessage.setMessages(Arrays.<Object>asList(viber, sms));
-        omnimessage.setTo("<recipient phone number in international format>");
+        omnimessage.setTo("<recipient phone number in e.164 format>");
 
         try {
             OmniMessageCreateSuccessResponse result = apiInstance.sendOmnimessage(omnimessage);
