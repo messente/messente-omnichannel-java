@@ -32,7 +32,9 @@ public enum Channel {
   
   SMS("sms"),
   
-  VIBER("viber");
+  VIBER("viber"),
+
+  WHATSAPP("whatsapp");
 
   private String value;
 

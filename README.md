@@ -55,7 +55,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/omnichannel-java-0.0.1.jar`
+* `target/omnichannel-java-0.0.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

@@ -8,5 +8,7 @@
 
 * `VIBER` (value: `"viber"`)
 
+* `WHATSAPP` (value: `"whatsapp"`)
+
 
 

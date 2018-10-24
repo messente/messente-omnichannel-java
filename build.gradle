@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'com.messente.omnichannel'
-version = '0.0.1'
+version = '0.0.2'
 
 buildscript {
     repositories {

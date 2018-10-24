@@ -50,6 +50,8 @@ public enum Err {
   
   NUMBER_9(9),
   
+  NUMBER_10(10),
+  
   NUMBER_999(999);
 
   private Integer value;
