@@ -5,7 +5,7 @@
     <artifactId>omnichannel-java</artifactId>
     <packaging>jar</packaging>
     <name>omnichannel-java</name>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <url>https://github.com/messente/messente-omnichannel-java</url>
     <description>Java library for Messente Omnichannel API</description>
     <scm>
@@ -212,6 +212,11 @@
             <groupId>io.gsonfire</groupId>
             <artifactId>gson-fire</artifactId>
             <version>${gson-fire-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.client</artifactId>
+            <version>1.0.1</version>
         </dependency>
             <dependency>
                 <groupId>org.threeten</groupId>

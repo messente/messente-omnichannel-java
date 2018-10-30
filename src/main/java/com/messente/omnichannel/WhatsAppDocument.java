@@ -20,43 +20,57 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.messente.omnichannel.ErrorItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * ErrorResponse
+ * WhatsAppDocument
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-23T09:49:45.209+03:00[Europe/Tallinn]")
-public class ErrorResponse {
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<ErrorItem> errors = new ArrayList<ErrorItem>();
+public class WhatsAppDocument {
+  public static final String SERIALIZED_NAME_CAPTION = "caption";
+  @SerializedName(SERIALIZED_NAME_CAPTION)
+  private String caption;
 
-  public ErrorResponse errors(List<ErrorItem> errors) {
-    this.errors = errors;
-    return this;
-  }
+  public static final String SERIALIZED_NAME_CONTENT = "content";
+  @SerializedName(SERIALIZED_NAME_CONTENT)
+  private String content;
 
-  public ErrorResponse addErrorsItem(ErrorItem errorsItem) {
-    this.errors.add(errorsItem);
+  public WhatsAppDocument caption(String caption) {
+    this.caption = caption;
     return this;
   }
 
    /**
-   * Get errors
-   * @return errors
+   * Description for the document
+   * @return caption
   **/
-  @ApiModelProperty(required = true, value = "")
-  public List<ErrorItem> getErrors() {
-    return errors;
+  @ApiModelProperty(value = "Description for the document")
+  public String getCaption() {
+    return caption;
   }
 
-  public void setErrors(List<ErrorItem> errors) {
-    this.errors = errors;
+  public void setCaption(String caption) {
+    this.caption = caption;
+  }
+
+  public WhatsAppDocument content(String content) {
+    this.content = content;
+    return this;
+  }
+
+   /**
+   * Base64-encoded image
+   * @return content
+  **/
+  @ApiModelProperty(required = true, value = "Base64-encoded image")
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
   }
 
 
@@ -68,22 +82,24 @@ public class ErrorResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorResponse errorResponse = (ErrorResponse) o;
-    return Objects.equals(this.errors, errorResponse.errors);
+    WhatsAppDocument whatsAppDocument = (WhatsAppDocument) o;
+    return Objects.equals(this.caption, whatsAppDocument.caption) &&
+        Objects.equals(this.content, whatsAppDocument.content);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors);
+    return Objects.hash(caption, content);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorResponse {\n");
+    sb.append("class WhatsAppDocument {\n");
     
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    caption: ").append(toIndentedString(caption)).append("\n");
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("}");
     return sb.toString();
   }

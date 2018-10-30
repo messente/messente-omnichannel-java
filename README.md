@@ -32,7 +32,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.messente.omnichannel</groupId>
   <artifactId>omnichannel-java</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -42,7 +42,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.messente.omnichannel:omnichannel-java:0.0.1"
+compile "com.messente.omnichannel:omnichannel-java:0.0.2"
 ```
 
 ### Others
@@ -55,7 +55,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/omnichannel-java-0.0.1.jar`
+* `target/omnichannel-java-0.0.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -63,14 +63,15 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-import com.messente.omnichannel.*;
-import java.util.Arrays;
 
-class Main {
+public class Main {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setUsername("<MESSENTE_API_USERNAME>");
-        defaultClient.setPassword("<MESSENTE_API_PASSWORD>");
+
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("<MESSENTE_API_USERNAME>");
+        basicAuth.setPassword("<MESSENTE_API_PASSWORD>");
 
         OmnimessageApi apiInstance = new OmnimessageApi();
         Omnimessage omnimessage = new Omnimessage(); // Omnimessage | Omnimessage to be sent
@@ -80,8 +81,14 @@ class Main {
         SMS sms = new SMS();
         sms.text("SMS text");
 
-        omnimessage.setMessages(Arrays.<Object>asList(viber, sms));
-        omnimessage.setTo("<recipient phone number in international format>");
+        WhatsApp whatsApp = new WhatsApp();
+        WhatsAppText whatsAppText = new WhatsAppText();
+        whatsAppText.body("WhatsApp text");
+        whatsApp.text(whatsAppText);
+
+        omnimessage.setMessages(Arrays.<Object>asList(whatsApp, viber, sms));
+        omnimessage.setTo("<recipient phone number in e.164 format>");
+
 
         try {
             OmniMessageCreateSuccessResponse result = apiInstance.sendOmnimessage(omnimessage);
@@ -89,13 +96,9 @@ class Main {
         } catch (ApiException e) {
             System.err.println("Exception when calling OmnimessageApi#sendOmnimessage");
             e.printStackTrace();
-            System.out.println(e.getResponseBody());
         }
-
     }
-
 }
-
 ```
 
 ## Documentation for API Endpoints
@@ -126,6 +129,11 @@ Class | Method | HTTP request | Description
  - [SMS](docs/SMS.md)
  - [Status](docs/Status.md)
  - [Viber](docs/Viber.md)
+ - [WhatsApp](docs/WhatsApp.md)
+ - [WhatsAppAudio](docs/WhatsAppAudio.md)
+ - [WhatsAppDocument](docs/WhatsAppDocument.md)
+ - [WhatsAppImage](docs/WhatsAppImage.md)
+ - [WhatsAppText](docs/WhatsAppText.md)
 
 
 ## Documentation for Authorization

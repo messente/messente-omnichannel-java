@@ -67,14 +67,19 @@ Sends an Omnimessage
 
 ### Example
 ```java
+import com.messente.*;
+import com.messente.auth.*;
 import com.messente.omnichannel.*;
 import java.util.Arrays;
 
-class Main {
+public class Main {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setUsername("<MESSENTE_API_USERNAME>");
-        defaultClient.setPassword("<MESSENTE_API_PASSWORD>");
+        
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("<MESSENTE_API_USERNAME>");
+        basicAuth.setPassword("<MESSENTE_API_PASSWORD>");
 
         OmnimessageApi apiInstance = new OmnimessageApi();
         Omnimessage omnimessage = new Omnimessage(); // Omnimessage | Omnimessage to be sent
@@ -85,7 +90,7 @@ class Main {
         sms.text("SMS text");
 
         omnimessage.setMessages(Arrays.<Object>asList(viber, sms));
-        omnimessage.setTo("<recipient phone number in international format>");
+        omnimessage.setTo("<recipient phone number in e.164 format>");
 
         try {
             OmniMessageCreateSuccessResponse result = apiInstance.sendOmnimessage(omnimessage);
@@ -94,9 +99,7 @@ class Main {
             System.err.println("Exception when calling OmnimessageApi#sendOmnimessage");
             e.printStackTrace();
         }
-
     }
-
 }
 ```
 

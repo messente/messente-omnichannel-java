@@ -24,6 +24,8 @@
 
 * `NUMBER_9` (value: `9`)
 
+* `NUMBER_10` (value: `10`)
+
 * `NUMBER_999` (value: `999`)
 
 
