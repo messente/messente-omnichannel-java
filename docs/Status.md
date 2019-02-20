@@ -24,5 +24,7 @@
 
 * `NACK` (value: `"NACK"`)
 
+* `SEEN` (value: `"SEEN"`)
+
 
 
