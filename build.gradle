@@ -1,3 +1,9 @@
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+group = 'com.messente.omnichannel'
+version = '0.1.0'
+
 buildscript {
     repositories {
         jcenter()
@@ -8,23 +14,10 @@ buildscript {
     }
 }
 
-plugins {
-    id "com.jfrog.bintray" version "1.7"
-}
-
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
-
-group = 'com.messente.omnichannel'
-version = '0.0.2'
-
-
 repositories {
     jcenter()
 }
+
 
 if(hasProperty('target') && target == 'android') {
 
@@ -79,37 +72,25 @@ if(hasProperty('target') && target == 'android') {
     artifacts {
         archives sourcesJar
     }
-}
 
-bintray {
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+} else {
 
-    configurations = ['archives']
+    apply plugin: 'java'
+    apply plugin: 'maven'
 
-    pkg {
-        repo = 'omnichannel-java'
-        name = 'omnichannel-java'
-        userOrg = "messente"
-        version {
-            name = version
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+
+    install {
+        repositories.mavenInstaller {
+            pom.artifactId = 'omnichannel-java'
         }
     }
-}
 
-
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
-    classifier = 'sources'
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from 'build/docs/javadoc'
-}
-
-artifacts {
-    archives sourcesJar, javadocJar
+    task execute(type:JavaExec) {
+       main = System.getProperty('mainClass')
+       classpath = sourceSets.main.runtimeClasspath
+    }
 }
 
 dependencies {

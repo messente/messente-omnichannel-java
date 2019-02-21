@@ -31,7 +31,7 @@ import java.util.UUID;
 /**
  * DeliveryReportResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-20T14:26:56.342+02:00[Europe/Tallinn]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-21T15:27:15.538+02:00[Europe/Tallinn]")
 public class DeliveryReportResponse {
   public static final String SERIALIZED_NAME_STATUSES = "statuses";
   @SerializedName(SERIALIZED_NAME_STATUSES)
@@ -129,6 +129,7 @@ public class DeliveryReportResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeliveryReportResponse {\n");
+    
     sb.append("    statuses: ").append(toIndentedString(statuses)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    omnimessageId: ").append(toIndentedString(omnimessageId)).append("\n");

@@ -52,18 +52,6 @@ public class JSON {
 
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
-                .registerTypeSelector(Message.class, new TypeSelector() {
-                    @Override
-                    public Class getClassForElement(JsonElement readElement) {
-                        Map classByDiscriminatorValue = new HashMap();
-                        classByDiscriminatorValue.put("sms".toUpperCase(Locale.ROOT), ERRORUNKNOWN.class);
-                        classByDiscriminatorValue.put("viber".toUpperCase(Locale.ROOT), ERRORUNKNOWN.class);
-                        classByDiscriminatorValue.put("whatsapp".toUpperCase(Locale.ROOT), ERRORUNKNOWN.class);
-                        classByDiscriminatorValue.put("Message".toUpperCase(Locale.ROOT), Message.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "channel"));
-                    }
-          })
         ;
         GsonBuilder builder = fireBuilder.createGsonBuilder();
         return builder;

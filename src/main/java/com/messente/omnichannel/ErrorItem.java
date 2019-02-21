@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * ErrorItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-20T14:26:56.342+02:00[Europe/Tallinn]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-21T15:27:15.538+02:00[Europe/Tallinn]")
 public class ErrorItem {
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -145,6 +145,7 @@ public class ErrorItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorItem {\n");
+    
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");

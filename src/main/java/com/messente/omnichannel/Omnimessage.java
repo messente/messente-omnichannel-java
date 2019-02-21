@@ -20,7 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.messente.omnichannel.OneOfViberSMSWhatsApp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -31,11 +30,11 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * Omnimessage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-20T14:26:56.342+02:00[Europe/Tallinn]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-21T15:27:15.538+02:00[Europe/Tallinn]")
 public class Omnimessage {
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
-  private List<OneOfViberSMSWhatsApp> messages = new ArrayList<OneOfViberSMSWhatsApp>();
+  private List<Object> messages = new ArrayList<Object>();
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -49,12 +48,12 @@ public class Omnimessage {
   @SerializedName(SERIALIZED_NAME_TIME_TO_SEND)
   private OffsetDateTime timeToSend;
 
-  public Omnimessage messages(List<OneOfViberSMSWhatsApp> messages) {
+  public Omnimessage messages(List<Object> messages) {
     this.messages = messages;
     return this;
   }
 
-  public Omnimessage addMessagesItem(OneOfViberSMSWhatsApp messagesItem) {
+  public Omnimessage addMessagesItem(Object messagesItem) {
     this.messages.add(messagesItem);
     return this;
   }
@@ -64,11 +63,11 @@ public class Omnimessage {
    * @return messages
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<OneOfViberSMSWhatsApp> getMessages() {
+  public List<Object> getMessages() {
     return messages;
   }
 
-  public void setMessages(List<OneOfViberSMSWhatsApp> messages) {
+  public void setMessages(List<Object> messages) {
     this.messages = messages;
   }
 
@@ -152,6 +151,7 @@ public class Omnimessage {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Omnimessage {\n");
+    
     sb.append("    messages: ").append(toIndentedString(messages)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    dlrUrl: ").append(toIndentedString(dlrUrl)).append("\n");

@@ -20,16 +20,24 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.messente.omnichannel.Message;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Viber
+ * Viber message content
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-20T14:26:56.342+02:00[Europe/Tallinn]")
-public class Viber extends Message {
+@ApiModel(description = "Viber message content")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-21T15:27:15.538+02:00[Europe/Tallinn]")
+public class Viber {
+  public static final String SERIALIZED_NAME_SENDER = "sender";
+  @SerializedName(SERIALIZED_NAME_SENDER)
+  private String sender;
+
+  public static final String SERIALIZED_NAME_VALIDITY = "validity";
+  @SerializedName(SERIALIZED_NAME_VALIDITY)
+  private Integer validity;
+
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
   private String text;
@@ -45,6 +53,46 @@ public class Viber extends Message {
   public static final String SERIALIZED_NAME_BUTTON_TEXT = "button_text";
   @SerializedName(SERIALIZED_NAME_BUTTON_TEXT)
   private String buttonText;
+
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  private String channel = "viber";
+
+  public Viber sender(String sender) {
+    this.sender = sender;
+    return this;
+  }
+
+   /**
+   * Phone number or alphanumeric sender name
+   * @return sender
+  **/
+  @ApiModelProperty(value = "Phone number or alphanumeric sender name")
+  public String getSender() {
+    return sender;
+  }
+
+  public void setSender(String sender) {
+    this.sender = sender;
+  }
+
+  public Viber validity(Integer validity) {
+    this.validity = validity;
+    return this;
+  }
+
+   /**
+   * After how many minutes this channel is considered as failed and the next channel is attempted
+   * @return validity
+  **/
+  @ApiModelProperty(example = "360", value = "After how many minutes this channel is considered as failed and the next channel is attempted")
+  public Integer getValidity() {
+    return validity;
+  }
+
+  public void setValidity(Integer validity) {
+    this.validity = validity;
+  }
 
   public Viber text(String text) {
     this.text = text;
@@ -118,6 +166,24 @@ public class Viber extends Message {
     this.buttonText = buttonText;
   }
 
+  public Viber channel(String channel) {
+    this.channel = channel;
+    return this;
+  }
+
+   /**
+   * Get channel
+   * @return channel
+  **/
+  @ApiModelProperty(value = "")
+  public String getChannel() {
+    return channel;
+  }
+
+  public void setChannel(String channel) {
+    this.channel = channel;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -128,16 +194,18 @@ public class Viber extends Message {
       return false;
     }
     Viber viber = (Viber) o;
-    return Objects.equals(this.text, viber.text) &&
+    return Objects.equals(this.sender, viber.sender) &&
+        Objects.equals(this.validity, viber.validity) &&
+        Objects.equals(this.text, viber.text) &&
         Objects.equals(this.imageUrl, viber.imageUrl) &&
         Objects.equals(this.buttonUrl, viber.buttonUrl) &&
         Objects.equals(this.buttonText, viber.buttonText) &&
-        super.equals(o);
+        Objects.equals(this.channel, viber.channel);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, imageUrl, buttonUrl, buttonText, super.hashCode());
+    return Objects.hash(sender, validity, text, imageUrl, buttonUrl, buttonText, channel);
   }
 
 
@@ -145,11 +213,14 @@ public class Viber extends Message {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Viber {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    sender: ").append(toIndentedString(sender)).append("\n");
+    sb.append("    validity: ").append(toIndentedString(validity)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    buttonUrl: ").append(toIndentedString(buttonUrl)).append("\n");
     sb.append("    buttonText: ").append(toIndentedString(buttonText)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("}");
     return sb.toString();
   }

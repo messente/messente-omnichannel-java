@@ -23,6 +23,9 @@ import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 
+import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
+import org.apache.oltu.oauth2.common.message.types.GrantType;
+
 import javax.net.ssl.*;
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +51,9 @@ import java.util.regex.Pattern;
 import com.messente.auth.Authentication;
 import com.messente.auth.HttpBasicAuth;
 import com.messente.auth.ApiKeyAuth;
+import com.messente.auth.OAuth;
+import com.messente.auth.RetryingOAuth;
+import com.messente.auth.OAuthFlow;
 
 public class ApiClient {
 
@@ -83,7 +89,7 @@ public class ApiClient {
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
-
+    
     private void init() {
         httpClient = new OkHttpClient();
 
@@ -334,6 +340,12 @@ public class ApiClient {
      * @param accessToken Access token
      */
     public void setAccessToken(String accessToken) {
+        for (Authentication auth : authentications.values()) {
+            if (auth instanceof OAuth) {
+                ((OAuth) auth).setAccessToken(accessToken);
+                return;
+            }
+        }
         throw new RuntimeException("No OAuth2 authentication configured!");
     }
 
@@ -479,6 +491,19 @@ public class ApiClient {
         return this;
     }
 
+    /**
+     * Helper method to configure the token endpoint of the first oauth found in the apiAuthorizations (there should be only one)
+     * @return Token request builder
+     */
+    public TokenRequestBuilder getTokenEndPoint() {
+        for (Authentication apiAuth : authentications.values()) {
+            if (apiAuth instanceof RetryingOAuth) {
+                RetryingOAuth retryingOAuth = (RetryingOAuth) apiAuth;
+                return retryingOAuth.getTokenRequestBuilder();
+            }
+        }
+        return null;
+    }
 
     /**
      * Format the given parameter object into string.

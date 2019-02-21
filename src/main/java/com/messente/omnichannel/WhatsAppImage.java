@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * WhatsAppImage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-20T14:26:56.342+02:00[Europe/Tallinn]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-21T15:27:15.538+02:00[Europe/Tallinn]")
 public class WhatsAppImage {
   public static final String SERIALIZED_NAME_CAPTION = "caption";
   @SerializedName(SERIALIZED_NAME_CAPTION)
@@ -97,6 +97,7 @@ public class WhatsAppImage {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class WhatsAppImage {\n");
+    
     sb.append("    caption: ").append(toIndentedString(caption)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("}");

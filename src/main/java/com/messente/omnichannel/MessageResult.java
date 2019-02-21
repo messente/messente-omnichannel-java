@@ -29,7 +29,7 @@ import java.util.UUID;
 /**
  * MessageResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-20T14:26:56.342+02:00[Europe/Tallinn]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-21T15:27:15.538+02:00[Europe/Tallinn]")
 public class MessageResult {
   public static final String SERIALIZED_NAME_MESSAGE_ID = "message_id";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
@@ -122,6 +122,7 @@ public class MessageResult {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MessageResult {\n");
+    
     sb.append("    messageId: ").append(toIndentedString(messageId)).append("\n");
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    sender: ").append(toIndentedString(sender)).append("\n");
