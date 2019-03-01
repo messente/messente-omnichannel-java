@@ -48,7 +48,9 @@ public enum Status {
   
   EXPIRED("EXPIRED"),
   
-  NACK("NACK");
+  NACK("NACK"),
+  
+  SEEN("SEEN");
 
   private String value;
 

@@ -1,11 +1,11 @@
-# omnichannel-java
+# {{artifactId}}
 This is the Java library for the Messente Omnichannel API
 
 
 ## Requirements
 
 Building the API client library requires:
-1. Java 1.7+
+1. Java {{#supportJava6}}1.6{{/supportJava6}}{{^supportJava6}}{{#java8}}1.8{{/java8}}{{^java8}}1.7{{/java8}}{{/supportJava6}}+
 2. Maven/Gradle
 
 ## Installation
@@ -30,9 +30,9 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.messente.omnichannel</groupId>
-  <artifactId>omnichannel-java</artifactId>
-  <version>0.1.0</version>
+  <groupId>{{{groupId}}}</groupId>
+  <artifactId>{{{artifactId}}}</artifactId>
+  <version>{{{artifactVersion}}}</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -42,7 +42,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.messente.omnichannel:omnichannel-java:0.1.0"
+compile "{{{groupId}}}:{{{artifactId}}}:{{{artifactVersion}}}"
 ```
 
 ### Others
@@ -55,7 +55,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/omnichannel-java-0.1.0.jar`
+* `target/{{{artifactId}}}-{{{artifactVersion}}}.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -103,45 +103,39 @@ public class Main {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.messente.com/v1*
+All URIs are relative to *{{basePath}}*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DeliveryReportApi* | [**retrieveDeliveryReport**](docs/DeliveryReportApi.md#retrieveDeliveryReport) | **GET** /omnimessage/{omnimessage_id}/status | Retrieves the delivery report for the Omnimessage
-*OmnimessageApi* | [**cancelScheduledMessage**](docs/OmnimessageApi.md#cancelScheduledMessage) | **DELETE** /omnimessage/{omnimessage_id} | Cancels a scheduled Omnimessage
-*OmnimessageApi* | [**sendOmnimessage**](docs/OmnimessageApi.md#sendOmnimessage) | **POST** /omnimessage | Sends an Omnimessage
-
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationId}}) | **{{httpMethod}}** {{path}} | {{#summary}}{{summary}}{{/summary}}
+{{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
 ## Documentation for Models
 
- - [Channel](docs/Channel.md)
- - [DeliveryReportResponse](docs/DeliveryReportResponse.md)
- - [DeliveryResult](docs/DeliveryResult.md)
- - [Err](docs/Err.md)
- - [ErrorItem](docs/ErrorItem.md)
- - [ErrorResponse](docs/ErrorResponse.md)
- - [MessageResult](docs/MessageResult.md)
- - [OmniMessageCreateSuccessResponse](docs/OmniMessageCreateSuccessResponse.md)
- - [Omnimessage](docs/Omnimessage.md)
- - [ResponseErrorCode](docs/ResponseErrorCode.md)
- - [ResponseErrorTitle](docs/ResponseErrorTitle.md)
- - [SMS](docs/SMS.md)
- - [Status](docs/Status.md)
- - [Viber](docs/Viber.md)
- - [WhatsApp](docs/WhatsApp.md)
- - [WhatsAppAudio](docs/WhatsAppAudio.md)
- - [WhatsAppDocument](docs/WhatsAppDocument.md)
- - [WhatsAppImage](docs/WhatsAppImage.md)
- - [WhatsAppText](docs/WhatsAppText.md)
-
+{{#models}}{{#model}} - [{{classname}}]({{modelDocPath}}{{classname}}.md)
+{{/model}}{{/models}}
 
 ## Documentation for Authorization
 
-Authentication schemes defined for the API:
-### basicAuth
+{{^authMethods}}All endpoints do not require authorization.
+{{/authMethods}}Authentication schemes defined for the API:
+{{#authMethods}}### {{name}}
 
-- **Type**: HTTP basic authentication
+{{#isApiKey}}- **Type**: API key
+- **API key parameter name**: {{keyParamName}}
+- **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
+{{/isApiKey}}
+{{#isBasic}}- **Type**: HTTP basic authentication
+{{/isBasic}}
+{{#isOAuth}}- **Type**: OAuth
+- **Flow**: {{flow}}
+- **Authorization URL**: {{authorizationUrl}}
+- **Scopes**: {{^scopes}}N/A{{/scopes}}
+{{#scopes}}  - {{scope}}: {{description}}
+{{/scopes}}
+{{/isOAuth}}
 
+{{/authMethods}}
 
 ## Recommendation
 
@@ -149,5 +143,5 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 ## Author
 
-messente@messente.com
-
+{{#apiInfo}}{{#apis}}{{^hasMore}}{{infoEmail}}
+{{/hasMore}}{{/apis}}{{/apiInfo}}

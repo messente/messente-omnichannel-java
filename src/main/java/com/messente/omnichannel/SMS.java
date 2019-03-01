@@ -20,28 +20,124 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.messente.omnichannel.Message;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 /**
- * SMS
+ * SMS message content
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-23T09:49:45.209+03:00[Europe/Tallinn]")
-public class SMS extends Message {
+@ApiModel(description = "SMS message content")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-21T17:59:06.249+02:00[Europe/Tallinn]")
+public class SMS {
+  public static final String SERIALIZED_NAME_SENDER = "sender";
+  @SerializedName(SERIALIZED_NAME_SENDER)
+  private String sender;
+
+  public static final String SERIALIZED_NAME_VALIDITY = "validity";
+  @SerializedName(SERIALIZED_NAME_VALIDITY)
+  private Integer validity;
+
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
   private String text;
 
+  /**
+   * Defines how non-GSM characters will be treated: - \&quot;on\&quot; Use replacement settings from the account&#39;s [API Auto Replace settings page](https://dashboard.messente.com/api-settings/auto-replace)(default) - \&quot;full\&quot; All non GSM 03.38 characters will be replaced with suitable alternatives - \&quot;off\&quot; Message content is not modified in any way 
+   */
+  @JsonAdapter(AutoconvertEnum.Adapter.class)
+  public enum AutoconvertEnum {
+    FULL("full"),
+    
+    ON("on"),
+    
+    OFF("off");
+
+    private String value;
+
+    AutoconvertEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AutoconvertEnum fromValue(String text) {
+      for (AutoconvertEnum b : AutoconvertEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AutoconvertEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AutoconvertEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AutoconvertEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return AutoconvertEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_AUTOCONVERT = "autoconvert";
   @SerializedName(SERIALIZED_NAME_AUTOCONVERT)
-  private BigDecimal autoconvert;
+  private AutoconvertEnum autoconvert;
 
   public static final String SERIALIZED_NAME_UDH = "udh";
   @SerializedName(SERIALIZED_NAME_UDH)
   private String udh;
+
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  private String channel = "sms";
+
+  public SMS sender(String sender) {
+    this.sender = sender;
+    return this;
+  }
+
+   /**
+   * Phone number or alphanumeric sender name
+   * @return sender
+  **/
+  @ApiModelProperty(value = "Phone number or alphanumeric sender name")
+  public String getSender() {
+    return sender;
+  }
+
+  public void setSender(String sender) {
+    this.sender = sender;
+  }
+
+  public SMS validity(Integer validity) {
+    this.validity = validity;
+    return this;
+  }
+
+   /**
+   * After how many minutes this channel is considered as failed and the next channel is attempted
+   * @return validity
+  **/
+  @ApiModelProperty(example = "360", value = "After how many minutes this channel is considered as failed and the next channel is attempted")
+  public Integer getValidity() {
+    return validity;
+  }
+
+  public void setValidity(Integer validity) {
+    this.validity = validity;
+  }
 
   public SMS text(String text) {
     this.text = text;
@@ -61,7 +157,7 @@ public class SMS extends Message {
     this.text = text;
   }
 
-  public SMS autoconvert(BigDecimal autoconvert) {
+  public SMS autoconvert(AutoconvertEnum autoconvert) {
     this.autoconvert = autoconvert;
     return this;
   }
@@ -71,11 +167,11 @@ public class SMS extends Message {
    * @return autoconvert
   **/
   @ApiModelProperty(value = "Defines how non-GSM characters will be treated: - \"on\" Use replacement settings from the account's [API Auto Replace settings page](https://dashboard.messente.com/api-settings/auto-replace)(default) - \"full\" All non GSM 03.38 characters will be replaced with suitable alternatives - \"off\" Message content is not modified in any way ")
-  public BigDecimal getAutoconvert() {
+  public AutoconvertEnum getAutoconvert() {
     return autoconvert;
   }
 
-  public void setAutoconvert(BigDecimal autoconvert) {
+  public void setAutoconvert(AutoconvertEnum autoconvert) {
     this.autoconvert = autoconvert;
   }
 
@@ -97,6 +193,24 @@ public class SMS extends Message {
     this.udh = udh;
   }
 
+  public SMS channel(String channel) {
+    this.channel = channel;
+    return this;
+  }
+
+   /**
+   * Get channel
+   * @return channel
+  **/
+  @ApiModelProperty(value = "")
+  public String getChannel() {
+    return channel;
+  }
+
+  public void setChannel(String channel) {
+    this.channel = channel;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -107,15 +221,17 @@ public class SMS extends Message {
       return false;
     }
     SMS SMS = (SMS) o;
-    return Objects.equals(this.text, SMS.text) &&
+    return Objects.equals(this.sender, SMS.sender) &&
+        Objects.equals(this.validity, SMS.validity) &&
+        Objects.equals(this.text, SMS.text) &&
         Objects.equals(this.autoconvert, SMS.autoconvert) &&
         Objects.equals(this.udh, SMS.udh) &&
-        super.equals(o);
+        Objects.equals(this.channel, SMS.channel);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, autoconvert, udh, super.hashCode());
+    return Objects.hash(sender, validity, text, autoconvert, udh, channel);
   }
 
 
@@ -123,10 +239,13 @@ public class SMS extends Message {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SMS {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    sender: ").append(toIndentedString(sender)).append("\n");
+    sb.append("    validity: ").append(toIndentedString(validity)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    autoconvert: ").append(toIndentedString(autoconvert)).append("\n");
     sb.append("    udh: ").append(toIndentedString(udh)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("}");
     return sb.toString();
   }

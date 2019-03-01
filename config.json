@@ -3,7 +3,7 @@
   "artifactDescription": "Java library for Messente Omnichannel API",
   "artifactId": "omnichannel-java",
   "artifactUrl": "https://github.com/messente/messente-omnichannel-java",
-  "artifactVersion": "0.0.2",
+  "artifactVersion": "0.1.0",
   "developerEmail": "admin@messente.com",
   "developerName": "Messente",
   "developerOrganization": "Messente Communications",

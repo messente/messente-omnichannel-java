@@ -20,7 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.messente.omnichannel.Message;
 import com.messente.omnichannel.WhatsAppAudio;
 import com.messente.omnichannel.WhatsAppDocument;
 import com.messente.omnichannel.WhatsAppImage;
@@ -30,10 +29,19 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * WhatsApp
+ * WhatsApp message content. Only one of \&quot;text\&quot;, \&quot;image\&quot;, \&quot;document\&quot; or \&quot;audio\&quot; can be provided.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-23T09:49:45.209+03:00[Europe/Tallinn]")
-public class WhatsApp extends Message {
+@ApiModel(description = "WhatsApp message content. Only one of \"text\", \"image\", \"document\" or \"audio\" can be provided.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-21T17:59:06.249+02:00[Europe/Tallinn]")
+public class WhatsApp {
+  public static final String SERIALIZED_NAME_SENDER = "sender";
+  @SerializedName(SERIALIZED_NAME_SENDER)
+  private String sender;
+
+  public static final String SERIALIZED_NAME_VALIDITY = "validity";
+  @SerializedName(SERIALIZED_NAME_VALIDITY)
+  private Integer validity;
+
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
   private WhatsAppText text = null;
@@ -49,6 +57,46 @@ public class WhatsApp extends Message {
   public static final String SERIALIZED_NAME_AUDIO = "audio";
   @SerializedName(SERIALIZED_NAME_AUDIO)
   private WhatsAppAudio audio = null;
+
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  private String channel = "whatsapp";
+
+  public WhatsApp sender(String sender) {
+    this.sender = sender;
+    return this;
+  }
+
+   /**
+   * Phone number or alphanumeric sender name
+   * @return sender
+  **/
+  @ApiModelProperty(value = "Phone number or alphanumeric sender name")
+  public String getSender() {
+    return sender;
+  }
+
+  public void setSender(String sender) {
+    this.sender = sender;
+  }
+
+  public WhatsApp validity(Integer validity) {
+    this.validity = validity;
+    return this;
+  }
+
+   /**
+   * After how many minutes this channel is considered as failed and the next channel is attempted
+   * @return validity
+  **/
+  @ApiModelProperty(example = "360", value = "After how many minutes this channel is considered as failed and the next channel is attempted")
+  public Integer getValidity() {
+    return validity;
+  }
+
+  public void setValidity(Integer validity) {
+    this.validity = validity;
+  }
 
   public WhatsApp text(WhatsAppText text) {
     this.text = text;
@@ -122,6 +170,24 @@ public class WhatsApp extends Message {
     this.audio = audio;
   }
 
+  public WhatsApp channel(String channel) {
+    this.channel = channel;
+    return this;
+  }
+
+   /**
+   * Get channel
+   * @return channel
+  **/
+  @ApiModelProperty(value = "")
+  public String getChannel() {
+    return channel;
+  }
+
+  public void setChannel(String channel) {
+    this.channel = channel;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -132,16 +198,18 @@ public class WhatsApp extends Message {
       return false;
     }
     WhatsApp whatsApp = (WhatsApp) o;
-    return Objects.equals(this.text, whatsApp.text) &&
+    return Objects.equals(this.sender, whatsApp.sender) &&
+        Objects.equals(this.validity, whatsApp.validity) &&
+        Objects.equals(this.text, whatsApp.text) &&
         Objects.equals(this.image, whatsApp.image) &&
         Objects.equals(this.document, whatsApp.document) &&
         Objects.equals(this.audio, whatsApp.audio) &&
-        super.equals(o);
+        Objects.equals(this.channel, whatsApp.channel);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, image, document, audio, super.hashCode());
+    return Objects.hash(sender, validity, text, image, document, audio, channel);
   }
 
 
@@ -149,11 +217,14 @@ public class WhatsApp extends Message {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class WhatsApp {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    sender: ").append(toIndentedString(sender)).append("\n");
+    sb.append("    validity: ").append(toIndentedString(validity)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    document: ").append(toIndentedString(document)).append("\n");
     sb.append("    audio: ").append(toIndentedString(audio)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("}");
     return sb.toString();
   }

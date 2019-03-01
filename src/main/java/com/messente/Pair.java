@@ -13,7 +13,7 @@
 
 package com.messente;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2018-10-23T09:49:45.209+03:00[Europe/Tallinn]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-21T17:59:06.249+02:00[Europe/Tallinn]")
 public class Pair {
     private String name = "";
     private String value = "";
