@@ -66,14 +66,14 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 public class Main {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        ApiClient apiClient = new ApiClient();
 
         // Configure HTTP basic authorization: basicAuth
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        HttpBasicAuth basicAuth = (HttpBasicAuth) apiClient.getAuthentication("basicAuth");
         basicAuth.setUsername("<MESSENTE_API_USERNAME>");
         basicAuth.setPassword("<MESSENTE_API_PASSWORD>");
 
-        OmnimessageApi apiInstance = new OmnimessageApi();
+        OmnimessageApi apiInstance = new OmnimessageApi(apiClient);
         Omnimessage omnimessage = new Omnimessage(); // Omnimessage | Omnimessage to be sent
         Viber viber = new Viber();
         viber.text("Viber text");
